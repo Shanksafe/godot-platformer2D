@@ -1,0 +1,90 @@
+[gd_scene load_steps=11 format=3 uid="uid://du5cftmwdpawh"]
+
+[ext_resource type="Script" path="res://Scripts/option_menu.gd" id="1_mh8yr"]
+[ext_resource type="Texture2D" uid="uid://bflob1s0cgfge" path="res://Assets/Layers/sky.png" id="2_mxqcj"]
+[ext_resource type="Shader" path="res://moon.gdshader" id="2_vv6mc"]
+[ext_resource type="Shader" path="res://menu1.gdshader" id="4_tb2wq"]
+[ext_resource type="Texture2D" uid="uid://cu0lrl8cbt330" path="res://Assets/Layers/far-mountains.png" id="5_mrhwn"]
+[ext_resource type="Shader" path="res://menu.gdshader" id="6_cd4hc"]
+[ext_resource type="Texture2D" uid="uid://cmtrdcrbxiqlc" path="res://Assets/Layers/mountains.png" id="7_rcmk0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qd3x4"]
+shader = ExtResource("2_vv6mc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w2mwv"]
+shader = ExtResource("4_tb2wq")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uxw8p"]
+shader = ExtResource("6_cd4hc")
+
+[node name="optionMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mh8yr")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_qd3x4")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_mxqcj")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_w2mwv")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_mrhwn")
+
+[node name="bigMountain" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_uxw8p")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_rcmk0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="volume" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Volume"
+
+[node name="volume_slider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="mute" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Mute"
+
+[node name="CheckButton" type="CheckButton" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "back"
+
+[connection signal="value_changed" from="VBoxContainer/volume_slider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="toggled" from="VBoxContainer/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

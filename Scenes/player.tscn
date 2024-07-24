@@ -1,0 +1,155 @@
+[gd_scene load_steps=20 format=3 uid="uid://ckyb4ocdujov"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_q6e5c"]
+[ext_resource type="Texture2D" uid="uid://j7srd2jnd2wb" path="res://Assets/tanjiroSPRITE.png" id="1_x7ku8"]
+[ext_resource type="Texture2D" uid="uid://b2fux6h80n0px" path="res://Assets/light.png" id="3_o8ec4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kk7s7"]
+atlas = ExtResource("1_x7ku8")
+region = Rect2(96, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ueil1"]
+atlas = ExtResource("1_x7ku8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3cjm"]
+atlas = ExtResource("1_x7ku8")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugljt"]
+atlas = ExtResource("1_x7ku8")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mt6o5"]
+atlas = ExtResource("1_x7ku8")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3t2e"]
+atlas = ExtResource("1_x7ku8")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4m65g"]
+atlas = ExtResource("1_x7ku8")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45sdv"]
+atlas = ExtResource("1_x7ku8")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gelyk"]
+atlas = ExtResource("1_x7ku8")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5klyl"]
+atlas = ExtResource("1_x7ku8")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17mr2"]
+atlas = ExtResource("1_x7ku8")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dywn"]
+atlas = ExtResource("1_x7ku8")
+region = Rect2(160, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ck582"]
+atlas = ExtResource("1_x7ku8")
+region = Rect2(192, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6wbk"]
+atlas = ExtResource("1_x7ku8")
+region = Rect2(224, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fjour"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kk7s7")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ueil1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h3cjm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugljt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mt6o5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3t2e")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4m65g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45sdv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gelyk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5klyl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17mr2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dywn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ck582")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6wbk")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cvxr3"]
+radius = 5.0
+
+[node name="player" type="CharacterBody2D"]
+z_index = 5
+collision_layer = 2
+script = ExtResource("1_q6e5c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(15, 8)
+sprite_frames = SubResource("SpriteFrames_fjour")
+animation = &"idle"
+autoplay = "idle"
+frame = 3
+frame_progress = 0.023432
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(15, 14)
+shape = SubResource("CircleShape2D_cvxr3")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(16, 11)
+scale = Vector2(0.825521, 0.825521)
+energy = 0.3
+shadow_enabled = true
+shadow_filter_smooth = 50.4
+texture = ExtResource("3_o8ec4")
+texture_scale = 0.6
