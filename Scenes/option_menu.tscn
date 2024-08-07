@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://du5cftmwdpawh"]
+[gd_scene load_steps=13 format=3 uid="uid://du5cftmwdpawh"]
 
 [ext_resource type="Script" path="res://Scripts/option_menu.gd" id="1_mh8yr"]
 [ext_resource type="Texture2D" uid="uid://bflob1s0cgfge" path="res://Assets/Layers/sky.png" id="2_mxqcj"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://cu0lrl8cbt330" path="res://Assets/Layers/far-mountains.png" id="5_mrhwn"]
 [ext_resource type="Shader" path="res://menu.gdshader" id="6_cd4hc"]
 [ext_resource type="Texture2D" uid="uid://cmtrdcrbxiqlc" path="res://Assets/Layers/mountains.png" id="7_rcmk0"]
+[ext_resource type="FontFile" uid="uid://c1mnfk7vjg6us" path="res://fonts/PixelOperator8-Bold.ttf" id="8_xs0gj"]
+[ext_resource type="FontFile" uid="uid://eyy6ohlyocin" path="res://fonts/PixelOperator8.ttf" id="9_f3at4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qd3x4"]
 shader = ExtResource("2_vv6mc")
@@ -61,28 +63,44 @@ texture = ExtResource("7_rcmk0")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -287.0
+offset_top = -119.0
+offset_right = 289.0
+offset_bottom = 166.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="volume" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("8_xs0gj")
 text = "Volume"
 
 [node name="volume_slider" type="HSlider" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 1
+min_value = -100.0
 
 [node name="mute" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("8_xs0gj")
 text = "Mute"
 
 [node name="CheckButton" type="CheckButton" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("9_f3at4")
 text = "back"
 
 [connection signal="value_changed" from="VBoxContainer/volume_slider" to="." method="_on_volume_slider_value_changed"]

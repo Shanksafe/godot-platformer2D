@@ -8,4 +8,4 @@ func add_point():
 	score += 1 
 	score_label.text = str(score)
 	if score == 5:
-		get_tree().change_scene_to_file("res://Scenes/victory.tscn")
+		get_tree().change_scene_to_file("res://Scenes/level_2.tscn")

@@ -81,7 +81,6 @@ func _physics_process(delta):
 		animated_sprite.play("jump")
 	
 	
-	
 	#apply movement
 	if direction:
 		velocity.x = direction * SPEED

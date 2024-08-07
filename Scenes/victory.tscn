@@ -1,4 +1,16 @@
-[gd_scene format=3 uid="uid://cciu37hbeu7nv"]
+[gd_scene load_steps=8 format=3 uid="uid://cciu37hbeu7nv"]
+
+[ext_resource type="Shader" path="res://moon.gdshader" id="1_cab48"]
+[ext_resource type="Texture2D" uid="uid://bflob1s0cgfge" path="res://Assets/Layers/sky.png" id="2_geenn"]
+[ext_resource type="Shader" path="res://menu1.gdshader" id="3_wolmq"]
+[ext_resource type="Texture2D" uid="uid://cu0lrl8cbt330" path="res://Assets/Layers/far-mountains.png" id="4_m18wn"]
+[ext_resource type="FontFile" uid="uid://c1mnfk7vjg6us" path="res://fonts/PixelOperator8-Bold.ttf" id="5_d7at2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cvj0x"]
+shader = ExtResource("1_cab48")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qk2i0"]
+shader = ExtResource("3_wolmq")
 
 [node name="victory" type="Control"]
 layout_mode = 3
@@ -8,11 +20,41 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_cvj0x")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_geenn")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_qk2i0")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_m18wn")
+
 [node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 226.0
-offset_top = 113.0
-offset_right = 805.0
-offset_bottom = 354.0
-text = "You win
-"
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.0
+offset_top = -23.5
+offset_right = 134.0
+offset_bottom = 23.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_d7at2")
+theme_override_font_sizes/font_size = 32
+text = "YOU WIN !!"
